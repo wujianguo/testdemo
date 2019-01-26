@@ -176,7 +176,7 @@ static size_t storage_write(struct ms_istorage *st, const char *buf, int64_t pos
       break;
     }
   }
-  MS_DBG("%lld, %zu, write: %zu", pos, len, write);
+  // MS_DBG("%lld, %zu, write: %zu", pos, len, write);
   return write;
 }
 

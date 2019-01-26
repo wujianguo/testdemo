@@ -1,9 +1,12 @@
 language: c
 before_script: 
+  - pip install --user cpp-coveralls
   - mkdir temp
   - wget https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4 -O temp/wildo.mp4
 script: 
-  - $CC -Iinclude -Isrc src/mongoose.c src/ms_server.c src/ms_session.c src/ms_task.c src/ms_http_pipe.c src/ms_mem_storage.c src/ms_file_storage.c src/ms_memory_pool.c test/fake_file.c test/fake_pipe.c test/fake_reader.c test/fake_server.c test/test_file_storage.c test/test_mem_storage.c test/test_server.c test/test_task.c test/run_tests.c test/test_main.c -lpthread -lm && ./a.out `pwd`
+  - $CC -Iinclude -Isrc src/mongoose.c src/ms_server.c src/ms_session.c src/ms_task.c src/ms_http_pipe.c src/ms_mem_storage.c src/ms_file_storage.c src/ms_memory_pool.c test/fake_file.c test/fake_pipe.c test/fake_reader.c test/fake_server.c test/test_file_storage.c test/test_mem_storage.c test/test_server.c test/test_task.c test/run_tests.c test/test_main.c -lpthread -lm --coverage && ./a.out `pwd`
+after_success:
+  - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
 notifications:
   email: false
   slack: wujianguo:rA9mRfVh33AimobNV3c4LdlX
