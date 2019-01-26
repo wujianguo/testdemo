@@ -1,3 +1,5 @@
 language: c
 before_script: echo `pwd`
-script: $CC src/mongoose.c src/ms_server.c src/ms_session.c src/ms_task.c src/ms_http_pipe.c src/ms_mem_storage.c src/ms_file_storage.c src/ms_memory_pool.c
+script: 
+  - $CC -Iinclude -Isrc src/mongoose.c src/ms_server.c src/ms_session.c src/ms_task.c src/ms_http_pipe.c src/ms_mem_storage.c src/ms_file_storage.c src/ms_memory_pool.c test/fake_file.c test/fake_pipe.c test/fake_reader.c test/fake_server.c test/test_file_storage.c test/test_mem_storage.c test/test_server.c test/test_task.c test/run_tests.c test/test_main.c
+  - ./a.out
