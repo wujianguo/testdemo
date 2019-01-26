@@ -12,6 +12,7 @@
 #include "ms_mem_storage.h"
 #include "ms_http_pipe.h"
 #include "ms_task.h"
+#include <pthread.h>
 
 #define MS_STRINGIFY(v) MS_STRINGIFY_HELPER(v)
 #define MS_STRINGIFY_HELPER(v) #v
