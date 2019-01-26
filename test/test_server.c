@@ -26,7 +26,7 @@ static void check_buf(struct ms_test_client *client, const char *buf, int64_t po
     MS_ASSERT(fbuf[i] == buf[i]);
   }
   MS_FREE(fbuf);
-  MS_DBG("%x,%x,%x,%x,%x %lld, %zu, %lld", buf[0], buf[1], buf[2], buf[3], buf[4], pos, len, pos + len);
+  // MS_DBG("%x,%x,%x,%x,%x %lld, %zu, %lld", buf[0], buf[1], buf[2], buf[3], buf[4], pos, len, pos + len);
 }
 
 

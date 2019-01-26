@@ -103,7 +103,7 @@ static size_t try_transfer_data(struct ms_session *session) {
   check_buf(session, session->buf.buf, session->reader.pos + session->reader.sending, len);
   MS_ASSERT(session->reader.req_len == 0 || session->reader.pos + session->reader.sending + len <= session->reader.req_pos + session->reader.req_len);
   
-  MS_DBG("session:%p %x,%x,%x,%x,%x, send %lld, %zu, read:%zu, send_mbuf:%zu",session, session->buf.buf[0], session->buf.buf[1], session->buf.buf[2], session->buf.buf[3], session->buf.buf[4], read_from, len, read, session->connection->send_mbuf.len);
+  // MS_DBG("session:%p %x,%x,%x,%x,%x, send %lld, %zu, read:%zu, send_mbuf:%zu",session, session->buf.buf[0], session->buf.buf[1], session->buf.buf[2], session->buf.buf[3], session->buf.buf[4], read_from, len, read, session->connection->send_mbuf.len);
   
   session->reader.sending += len;
   mbuf_remove(&session->buf, len);
@@ -131,7 +131,7 @@ static void on_send(struct ms_ireader *reader, int num_sent_bytes) {
     }
   }
   
-  MS_DBG("session:%p pos:%lld, len:%d, left:%lld", session, session->reader.pos, body_len, session->reader.len);
+  // MS_DBG("session:%p pos:%lld, len:%d, left:%lld", session, session->reader.pos, body_len, session->reader.len);
   MS_ASSERT(session->reader.len > 0);
   
   session->reader.pos += body_len;
