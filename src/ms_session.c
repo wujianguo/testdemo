@@ -20,7 +20,8 @@ static void check_buf(struct ms_session *session, const char *buf, int64_t pos, 
   char *fbuf = MS_MALLOC(len);
   size_t read = pread(session->fp, fbuf, len, pos);
   MS_ASSERT(read == len);
-  for (int i = 0; i<len; ++i) {
+  int i = 0;
+  for (; i<len; ++i) {
     MS_ASSERT(fbuf[i] == buf[i]);
   }
   MS_FREE(fbuf);

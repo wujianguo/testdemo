@@ -66,7 +66,8 @@ void validate_buf(struct ms_fake_file *file, char *buf, size_t nbyte, off_t offs
   char *temp = MS_MALLOC(nbyte);
   size_t read = read_fake(file, temp, nbyte, offset);
   MS_ASSERT(read == nbyte);
-  for (int i = 0; i < read; ++i) {
+  int i = 0;
+  for (; i < read; ++i) {
     MS_ASSERT(temp[i] == buf[i]);
   }
 
