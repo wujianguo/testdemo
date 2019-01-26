@@ -57,6 +57,7 @@ struct ms_server {
   struct mg_mgr mgr;
   struct mg_connection *nc;
   char    port[16];
+  char    path[MG_MAX_PATH];
   
   QUEUE   sessions;
   QUEUE   tasks;
@@ -66,7 +67,7 @@ char *ms_str_of_ev(int ev);
 
 struct ms_server *ms_default_server(void);
 
-void ms_start(const char *http_port, void (*callback)(void));
+void ms_start(const char *http_port, const char *path, void (*callback)(void));
 
 void ms_stop(void);
 

@@ -33,7 +33,7 @@ typedef void (*on_case_done)(void);
 TEST_CASE_MAP(GEN_TEST_ENTRY)
 #undef GEN_TEST_ENTRY
 
-void run_async_tests(void);
+void run_async_tests(const char *path);
 
 
 // sync tests
@@ -52,7 +52,7 @@ SYNC_TEST_CASE_MAP(GEN_SYNC_TEST_ENTRY)
 #undef GEN_SYNC_TEST_ENTRY
 
 
-void run_sync_tests(void);
+void run_sync_tests(const char *path);
 
 
 #endif /* run_tests_h */

@@ -198,8 +198,9 @@ static void server_handler(struct mg_connection *nc, int ev, void *p) {
   }
 }
 
-void ms_start(const char *http_port, void (*callback)(void)) {
+void ms_start(const char *http_port, const char *path, void (*callback)(void)) {
   init_media_server(&s_server);
+  strcpy(s_server.path, path);
   
   struct mg_connection *nc;
   
@@ -235,7 +236,7 @@ void ms_stop() {
 }
 
 static void *server_thread(void *argv) {
-  ms_start("8090", NULL);
+  ms_start("8090", "", NULL);
   return NULL;
 }
 

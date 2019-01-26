@@ -55,7 +55,7 @@ struct ms_file_storage *ms_file_storage_open(void) {
   struct ms_file_storage *file_st = (struct ms_file_storage *)MS_MALLOC(sizeof(struct ms_file_storage));
   memset(file_st, 0, sizeof(struct ms_file_storage));
   
-  file_st->fp = open("/Users/wujianguo/Documents/temp/wildo.mp4", O_RDONLY);
+  // file_st->fp = open("/Users/wujianguo/Documents/temp/wildo.mp4", O_RDONLY);
   file_st->filesize = 2366189;
   
   file_st->st.get_filesize = get_filesize;

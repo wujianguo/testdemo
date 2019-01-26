@@ -57,8 +57,8 @@ static void on_server_start() {
 }
 
 
-void run_async_tests() {
-  ms_start("8090", on_server_start);
+void run_async_tests(const char *path) {
+  ms_start("8090", path, on_server_start);
 }
 
 
@@ -83,6 +83,6 @@ static void run_sync_case(int index)
 #undef GEN_SYNC_CASE_INFO_FRAME
 
 
-void run_sync_tests(void) {
+void run_sync_tests(const char *path) {
   run_sync_case(0);
 }
