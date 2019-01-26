@@ -8,6 +8,7 @@
 
 #include "ms_mem_storage.h"
 #include "ms_memory_pool.h"
+#include <math.h>
 
 #define MAX_SIZE_PER_SESSION (20*1024*1024)
 
