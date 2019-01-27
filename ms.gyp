@@ -38,7 +38,7 @@
                 '<@(test_src)',
             ],
             'link_settings': {
-                'libraries': ['-lpthread', '-lm']
+                'libraries': ['-lpthread', '-lm', '--coverage']
             },
             'cflags': [
                 '--coverage'
