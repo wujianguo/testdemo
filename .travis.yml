@@ -1,8 +1,12 @@
 language: c
+cache: 
+  directories:
+    - build/gyp
+    - build/wildo.mp4
 before_script: 
-  - git clone https://chromium.googlesource.com/external/gyp build/gyp --depth 3
+  - [ -d build/gyp ] || git clone https://chromium.googlesource.com/external/gyp build/gyp --depth 3
   - python gyp_ms.py -f make
-  - wget https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4 -O build/wildo.mp4
+  - [ -f build/wildo.mp4 ] || wget https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4 -O build/wildo.mp4
 script: 
   - make && ./out/Default/ms_test `pwd`
 after_success:
