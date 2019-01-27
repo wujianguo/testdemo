@@ -9,11 +9,11 @@
 #include "ms.h"
 #include "run_tests.h"
 #include "ms_file_storage.h"
+#include <string.h>
 
 void test_file_storage(void) {
   char path[MG_MAX_PATH] = {0};
-  strcpy(path, ms_default_server()->path);
-  strcat(path, "/build/wildo.mp4");
+  strcat(path, "build/wildo.mp4");
 
   struct ms_istorage *st = (struct ms_istorage *)ms_file_storage_open(path);
 
