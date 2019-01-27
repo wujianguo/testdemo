@@ -5,9 +5,9 @@ before_script:
   - pip install --user cpp-coveralls
   - wget https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4 -O build/wildo.mp4
 script: 
-  - make && ./out/Default/ms_test `pwd`
+  - make && ls out && ls out/Default && ./out/Default/ms_test `pwd`
 after_success:
-  - coveralls --exclude src/mongoose.c --exclude test --gcov-options '\-lp'
+  - coveralls --exclude src/mongoose.c --exclude test --exclude build --gcov-options '\-lp'
 notifications:
   email: false
   slack: wujianguo:rA9mRfVh33AimobNV3c4LdlX
