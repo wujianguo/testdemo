@@ -2,6 +2,7 @@ language: c
 cache: 
   directories:
     - build
+    - $HOME/.cache/pip
 before_script: 
   - if [ ! -d build/gyp ]; then git clone https://chromium.googlesource.com/external/gyp build/gyp --depth 3; fi
   - python gyp_ms.py -f make
