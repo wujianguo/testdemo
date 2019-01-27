@@ -14,3 +14,4 @@ after_success:
 notifications:
   email: false
   slack: wujianguo:rA9mRfVh33AimobNV3c4LdlX
+  
