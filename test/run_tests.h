@@ -38,13 +38,15 @@ void run_async_tests(const char *path);
 
 // sync tests
 
-//#define SYNC_TEST_CASE_MAP(XX)                \
-//        XX(MEM_STORAGE,  mem_storage)         \
-//        XX(FILE_STORAGE, file_storage)        \
+#define SYNC_TEST_CASE_MAP(XX)              \
+      XX(MEM_STORAGE,  mem_storage)         \
+      XX(FILE_STORAGE, file_storage)        \
+      XX(TASK_1, task_1)                    \
+      XX(TASK_2, task_2)                    \
 
-#define SYNC_TEST_CASE_MAP(XX)     \
-        XX(TASK_1, task_1)         \
-        XX(TASK_2, task_2)         \
+// #define SYNC_TEST_CASE_MAP(XX)     \
+//         XX(TASK_1, task_1)         \
+//         XX(TASK_2, task_2)         \
 
 
 #define GEN_SYNC_TEST_ENTRY(i, f) void test_##f(void);

@@ -18,7 +18,7 @@ struct ms_file_storage {
   int     fp;
 };
 
-struct ms_file_storage *ms_file_storage_open(void);
+struct ms_file_storage *ms_file_storage_open(const char *path);
 
 #endif /* ms_file_storage_h */
 

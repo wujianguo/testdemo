@@ -18,7 +18,8 @@ static int64_t get_filesize(struct ms_istorage *st) {
 }
 
 static void set_filesize(struct ms_istorage *st, int64_t filesize) {
-  
+  struct ms_file_storage *file_st = cast_from(st);
+  file_st->filesize = filesize;  
 }
 
 static int64_t get_estimate_size(struct ms_istorage *st) {
@@ -35,8 +36,7 @@ static void wanted_pos_from(struct ms_istorage *st, int64_t from, int64_t *pos, 
 }
 
 static size_t storage_write(struct ms_istorage *st, const char *buf, int64_t pos, size_t len) {
-  abort();
-  return len;
+  return 0;
 }
 
 static size_t storage_read(struct ms_istorage *st, char *buf, int64_t pos, size_t len) {
@@ -51,12 +51,11 @@ static void storage_close(struct ms_istorage *st) {
   MS_FREE(file_st);
 }
 
-struct ms_file_storage *ms_file_storage_open(void) {
+struct ms_file_storage *ms_file_storage_open(const char *path) {
   struct ms_file_storage *file_st = (struct ms_file_storage *)MS_MALLOC(sizeof(struct ms_file_storage));
   memset(file_st, 0, sizeof(struct ms_file_storage));
   
-  // file_st->fp = open("/Users/wujianguo/Documents/temp/wildo.mp4", O_RDONLY);
-  file_st->filesize = 2366189;
+  file_st->fp = open(path, O_RDONLY);
   
   file_st->st.get_filesize = get_filesize;
   file_st->st.set_filesize = set_filesize;

@@ -224,7 +224,7 @@ struct ms_session *ms_session_open(struct mg_connection *nc, struct http_message
     session->reader.len = filesize - session->reader.pos;
   }
   
-  // session->fp = open("/Users/wujianguo/Documents/temp/wildo.mp4", O_RDONLY);
+  // session->fp = open("/Users/wujianguo/Documents/build/wildo.mp4", O_RDONLY);
   return session;
 }
 

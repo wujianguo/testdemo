@@ -50,9 +50,9 @@ void start_fake_server(void) {
   QUEUE_INIT(&s_server.nc);
   char path[MG_MAX_PATH] = {0};
   strcpy(path, ms_default_server()->path);
-  strcat(path, "/temp/wildo.mp4");
+  strcat(path, "/build/wildo.mp4");
   add_nc(&s_server, path, "/fake/wildo.mp4", ms_fake_type_normal);
-  // add_nc(&s_server, "/Users/wujianguo/Documents/temp/wildo.mp4", "/fake/wildo.mp4", ms_fake_type_normal);
+  // add_nc(&s_server, "/Users/wujianguo/Documents/build/wildo.mp4", "/fake/wildo.mp4", ms_fake_type_normal);
 }
 
 void fake_url(struct ms_fake_nc *nc, char *url, int url_len) {

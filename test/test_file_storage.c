@@ -11,6 +11,23 @@
 #include "ms_file_storage.h"
 
 void test_file_storage(void) {
+  char path[MG_MAX_PATH] = {0};
+  strcpy(path, ms_default_server()->path);
+  strcat(path, "/build/wildo.mp4");
 
+  struct ms_istorage *st = (struct ms_istorage *)ms_file_storage_open(path);
+
+  cs_stat_t cst;
+  if (mg_stat(path, &cst) == 0) {
+    st->set_filesize(st, cst.st_size);
+  }
+
+  st->get_estimate_size(st);
+  st->get_filesize(st);
+  char buf[MS_PIECE_UNIT_SIZE] = {0};
+  st->write(st, buf, 0, 0);
+  st->read(st, buf, 0, MS_PIECE_UNIT_SIZE);
+
+  st->close(st);
 }
 
