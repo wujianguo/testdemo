@@ -38,8 +38,11 @@
                 '<@(test_src)',
             ],
             'link_settings': {
-                'libraries': ['-lpthread', '-lm', '--coverage']
-            }
+                'libraries': ['-lpthread', '-lm']
+            },
+            'cflags': [
+                '--coverage'
+            ]
         },
     ],
 }
