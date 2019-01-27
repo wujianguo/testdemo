@@ -2,15 +2,11 @@ language: c
 before_script: 
   - git clone https://chromium.googlesource.com/external/gyp build/gyp --depth 3
   - python gyp_ms.py -f make
-  - ls
-  - cat Makefile
-  - cat ms_test.target.mk
-  - pip install --user cpp-coveralls
-  - make
   - wget https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4 -O build/wildo.mp4
 script: 
-  - make && ls && ls out && ls out/Default && ls out/Default/obj.target && ./out/Default/ms_test `pwd`
+  - make && ./out/Default/ms_test `pwd`
 after_success:
+  - pip install --user cpp-coveralls
   - coveralls --exclude src/mongoose.c --exclude test --exclude build --gcov-options '\-lp'
 notifications:
   email: false
