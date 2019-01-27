@@ -1,5 +1,9 @@
 language: c
 before_script: 
+  - git clone https://chromium.googlesource.com/external/gyp build/gyp
+  - python gyp_ms.py -f make
+  - make
+  - ls
   - pip install --user cpp-coveralls
   - mkdir build
   - wget https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4 -O build/wildo.mp4

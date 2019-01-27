@@ -1,26 +1,26 @@
 {
     'variables': {
         'src': [
-            'mongoose.c',
-            'ms_server.c',
-            'ms_session.c',
-            'ms_task.c',
-            'ms_http_pipe.c',
-            'ms_mem_storage.c',
-            'ms_file_storage.c',
-            'ms_memory_pool.c',
+            'src/mongoose.c',
+            'src/ms_server.c',
+            'src/ms_session.c',
+            'src/ms_task.c',
+            'src/ms_http_pipe.c',
+            'src/ms_mem_storage.c',
+            'src/ms_file_storage.c',
+            'src/ms_memory_pool.c',
         ],
         'test_src': [
-            'fake_file.c',
-            'fake_pipe.c',
-            'fake_reader.c',
-            'fake_server.c',
-            'test_file_storage.c',
-            'test_mem_storage.c',
-            'test_server.c',
-            'test_task.c',
-            'test_main.c'
-            'run_tests.c',
+            'test/fake_file.c',
+            'test/fake_pipe.c',
+            'test/fake_reader.c',
+            'test/fake_server.c',
+            'test/test_file_storage.c',
+            'test/test_mem_storage.c',
+            'test/test_server.c',
+            'test/test_task.c',
+            'test/test_main.c',
+            'test/run_tests.c',
         ]
     },
     'targets': [
@@ -37,6 +37,9 @@
                 '<@(src)',
                 '<@(test_src)',
             ],
+            'link_settings': {
+                'libraries': ['-lpthread', '-lm', '--coverage']
+            }
         },
     ],
 }
