@@ -49,7 +49,7 @@ void test_task_1() {
 
   int64_t filesize = 1024*1024*300;
   char url[MG_MAX_PATH] = {0};
-  snprintf(url, MG_MAX_PATH, "http://127.0.0.1/test.mp4?filesize=%lld", filesize);
+  snprintf(url, MG_MAX_PATH, "http://127.0.0.1/test.mp4?filesize=%" INT64_FMT, filesize);
   struct ms_task *task = ms_task_open(mg_mk_str(url), factory);
   struct ms_fake_reader *reader1 = add_reader(task, 0, filesize, filesize);
   

@@ -43,7 +43,7 @@ size_t read_fake(struct ms_fake_file *file, char *buf, size_t nbyte, off_t offse
     off_t off = (offset + read) % 32;
     
     char index_str[128] = {0};
-    snprintf(index_str, 128, "%llu%llu", index, file->filesize);
+    snprintf(index_str, 128, "%" INT64_FMT "%" INT64_FMT, index, file->filesize);
     char md5[33];
     ms_cs_md5(md5, index_str, strlen(index_str), NULL);
 

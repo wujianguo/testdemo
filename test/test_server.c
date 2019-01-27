@@ -75,9 +75,9 @@ static void run_test(int64_t pos, int64_t len, char *name, on_case_done callback
   MS_ASSERT(pos + len <= nct->filesize);
   char extra_headers[128] = {0};
   if (len == 0) {
-    snprintf(extra_headers, 128, "Range: bytes=%lld-\r\n", pos);
+    snprintf(extra_headers, 128, "Range: bytes=%" INT64_FMT "-\r\n", pos);
   } else {
-    snprintf(extra_headers, 128, "Range: bytes=%lld-%lld\r\n", pos, pos + len - 1);
+    snprintf(extra_headers, 128, "Range: bytes=%" INT64_FMT "-%" INT64_FMT "\r\n", pos, pos + len - 1);
   }
   struct mg_connection *nc = mg_connect_http(&ms_default_server()->mgr, test_handler, ms_url, extra_headers, NULL);
   struct ms_test_client *client = MS_MALLOC(sizeof(struct ms_test_client));

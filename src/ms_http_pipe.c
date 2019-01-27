@@ -83,7 +83,7 @@ static void pipe_handler(struct mg_connection *nc, int ev, void *ev_data) {
         struct mg_str *v = mg_get_http_header(hm, "Content-Length");
         int64_t size = to64(v->p);
         http_pipe->len = size;
-        MS_DBG("pipe:%p Content-Length: %lld, from:%lld", http_pipe, size, http_pipe->req_pos);
+        MS_DBG("pipe:%p Content-Length: %" INT64_FMT ", from:%" INT64_FMT, http_pipe, size, http_pipe->req_pos);
         http_pipe->pipe.callback.on_content_size(&http_pipe->pipe, http_pipe->req_pos, size);
       }
     }
@@ -182,9 +182,9 @@ static void pipe_connect(struct ms_ipipe *pipe) {
   struct ms_http_pipe *http_pipe = (struct ms_http_pipe *)pipe;
   char extra_headers[128] = {0};
   if (http_pipe->len > 0) {
-    snprintf(extra_headers, 128, "Range: bytes=%lld-%lld\r\n", http_pipe->pos, http_pipe->pos + http_pipe->len);
+    snprintf(extra_headers, 128, "Range: bytes=%" INT64_FMT "-%" INT64_FMT "\r\n", http_pipe->pos, http_pipe->pos + http_pipe->len);
   } else {
-    snprintf(extra_headers, 128, "Range: bytes=%lld-\r\n", http_pipe->pos);
+    snprintf(extra_headers, 128, "Range: bytes=%" INT64_FMT "-\r\n", http_pipe->pos);
   }
   MS_DBG("pipe:%p connect %s", http_pipe, extra_headers);
   struct mg_connection *nc = mg_connect_http(&ms_default_server()->mgr, pipe_handler, http_pipe->url.p, extra_headers, NULL);
