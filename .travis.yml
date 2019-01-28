@@ -11,7 +11,7 @@ script:
   - make && ./out/Default/ms_test `pwd`
 after_success:
   - pip install --user cpp-coveralls
-  - coveralls --exclude src/mongoose.c --exclude test --exclude build --gcov-options '\-lp'
+  - coveralls --exclude src/mongoose.c --exclude test --exclude build -exclude examples --gcov-options '\-lp'
 notifications:
   email: false
   slack: wujianguo:rA9mRfVh33AimobNV3c4LdlX
