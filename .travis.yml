@@ -8,7 +8,7 @@ before_script:
   - python gyp_ms.py -f make
   - if [ ! -f build/wildo.mp4 ]; then wget https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4 -O build/wildo.mp4; fi
 script: 
-  - make && ./out/Default/ms_test `pwd`
+  - make && ./out/Debug/ms_test `pwd`
 after_success:
   - pip install --user cpp-coveralls
   - coveralls --exclude src/mongoose.c --exclude test --exclude build -exclude examples --gcov-options '\-lp'
