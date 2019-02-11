@@ -238,6 +238,7 @@ void ms_session_close(struct ms_session *session) {
     close(session->fp);
   }
   mbuf_free(&session->buf);
+  
   MS_FREE(session);
 }
 
